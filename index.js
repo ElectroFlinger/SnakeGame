@@ -1,10 +1,9 @@
 // Game Constants & variables
-let inputDir = {x: 0, y: 0};//initialising a javascript object -- this is done because at t = 0 , we want our snake to be still
+let inputDir = {x: 0, y: 0};
 const foodSound = new Audio('food.mp3');
 const gaveOverSound = new Audio('gameover.mp3');
 const moveSound = new Audio('move.mp3');
-const musicSound = new Audio('music.mp3'); // here let our variable name is music and our audio file is also music this create problem 
-                                        // so use cont for these things
+const musicSound = new Audio('music.mp3');
 let speed = 5;
 let score = 0;
 let lastPaintTime = 0;
@@ -13,16 +12,9 @@ let snakeArr = [
 ]
 food = {x: 6 , y:7};
 
-// game loop for doing same thing over and over
-// setInterval() --> this method can help for doing things repetately in java script
-
-// but if you are operating with animation use window.requestAnimationFrame(main);
-
-
 // Game Functions
 function main(ctime){
-    window.requestAnimationFrame(main); // this will create a game loop 
-    // console.log(ctime);
+    window.requestAnimationFrame(main);
     if(((ctime-lastPaintTime)/1000) < (1/speed)){
         return ;
     }
@@ -66,7 +58,7 @@ function gameEngine(){
         snakeArr.unshift({x:snakeArr[0].x + inputDir.x , y:snakeArr[0].y + inputDir.y});
         let a = 2;
         let b = 16;
-        food = {x:Math.round(a+(b-a) * Math.random()) , y:Math.round(a + (b-a)* Math.random())}; // generate random number from a to b
+        food = {x:Math.round(a+(b-a) * Math.random()) , y:Math.round(a + (b-a)* Math.random())};
     }
 
     // Moving the snake
@@ -102,7 +94,6 @@ function gameEngine(){
     foodElement.classList.add('food');
     board.appendChild(foodElement);
 }
-// Main Logic Starts here
 window.requestAnimationFrame(main);
 window.addEventListener('keydown',e=>{
     inputDir = {x:0,y:1}; // Start the game
